@@ -3,21 +3,17 @@
 {{- defineDatasource "config" .Env.README_YAML | regexp.Replace ".*" "" -}}
 {{- defineDatasource "includes" .Env.README_INCLUDES | regexp.Replace ".*" "" }}
 
-
+#
 
 {{ if has (ds "config") "banner" }}
 {{ (ds "config").banner }}
 {{- end -}}
 
+
 <br/>
 
+
 # {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
-
-
-
-
-
-
 
 
 {{ if has (ds "config") "contents" }}
@@ -26,16 +22,10 @@
 {{ end }}
 
 
-
-
-
 {{ if has (ds "config") "introduction" }}
 ## 👋 Introduction
 {{ (ds "config").introduction -}}
 {{ end }}
-
-
-
 
 
 {{ if has (ds "config") "pattern" }}
@@ -43,9 +33,6 @@
 {{ range $pattern := (ds "config").pattern }}
 {{ printf "![%s](%s)" $pattern.name $pattern.url }}{{ end }}
 {{ end }}
-
-
-
 
 
 {{ if has (ds "config") "getting_started" }}
@@ -58,17 +45,10 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 {{ end }}
 
 
-
-
-
-
 {{ if has (ds "config") "technologies_used" }}
 ## 💻 Technologies Used
 {{ (ds "config").technologies_used -}}
 {{ end }}
-
-
-
 
 
 {{ if has (ds "config") "repo_structure" }}
@@ -77,14 +57,10 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 {{ end }}
 
 
-
-
 {{ if has (ds "config") "description" }}
 ## 💬 Description
 {{(ds "config").description }}
 {{ end }}
-
-
 
 
 {{ if has (ds "config") "jira" }}
@@ -93,16 +69,10 @@ Project: **{{ printf "[%s](%s)" $jira.project $jira.project_url}}** : [{{ printf
 {{ end }}
 
 
-
-
-
 {{ if has (ds "config") "quickstart" }}
 ## 🏁 Quick Start
 {{ (ds "config").quickstart }}
 {{ end }}
-
-
-
 
 
 {{ if has (ds "config") "examples" }}
@@ -111,17 +81,11 @@ Project: **{{ printf "[%s](%s)" $jira.project $jira.project_url}}** : [{{ printf
 {{ end }}
 
 
-
-
-
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
 {{ (include "includes" $file) }}
 {{- end }}
 {{- end }}
-
-
-
 
 
 {{ if has (ds "config") "related" }}
@@ -133,16 +97,12 @@ Additionally, check out these other related, and maintained projects.
 {{ end}}
 
 
-
-
-
 {{ if has (ds "config") "references" }}
 ## 🔗 References
 For additional context, refer to some of these links. 
 {{ range $reference := (ds "config").references }}
 {{ printf "- [%s](%s) - %s" $reference.name $reference.url $reference.description }}{{ end }}
 {{ end}}
-
 
 
 {{ if has (ds "config") "help" }}
@@ -154,16 +114,11 @@ For additional context, refer to some of these links.
 {{ end }}
 
 
-
-
-
 {{ if has (ds "config") "contributors" }}
 ## 🥳 Contributors
 {{ end }}
 
 
-
-
-
-{{ (ds "config").banner -}}
-
+{{ if has (ds "config") "banner" }}
+{{ (ds "config").banner }}
+{{- end -}}
