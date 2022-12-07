@@ -63,6 +63,9 @@ For additional context, refer to some of these links.
 ---
 {{ end }}
 
+{{ if has (ds "config") "contributors" }}
+## 🥳 Contributors
+{{ end }}
 
 {{ if has (ds "config") "banner" }}
 {{ (ds "config").banner }}
