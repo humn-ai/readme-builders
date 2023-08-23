@@ -2,9 +2,13 @@
 
 {{- defineDatasource "config" "docs/README.yaml" -}}
 
-{{ if has (ds "config") "banner" }}
-{{ (ds "config").banner }}
-{{- end -}}
+<a href="https://humn.ai/">
+<picture align="center">
+  <source align="center" media="(prefers-color-scheme: dark)" srcset="https://humnai-web-assests.s3.eu-west-1.amazonaws.com/humn-logo-light-small.png">
+  <source align="center" media="(prefers-color-scheme: light)" srcset="https://humnai-web-assests.s3-eu-west-1.amazonaws.com/humn-logo-dark-small.png">
+  <img align="center" alt="The humnai logo." src="https://humnai-web-assests.s3-eu-west-1.amazonaws.com/humn-logo-dark-small.png">
+</picture>
+</a>
 
 
 <br/>
@@ -76,6 +80,12 @@ For additional context, refer to some of these links.
 {{ end }}
 
 
-{{ if has (ds "config") "banner" }}
-{{ (ds "config").banner }}
-{{- end -}}
+#
+
+<a href="https://humn.ai/">
+<picture align="center">
+  <source align="center" media="(prefers-color-scheme: dark)" srcset="https://humnai-web-assests.s3.eu-west-1.amazonaws.com/humn-logo-light-small.png">
+  <source align="center" media="(prefers-color-scheme: light)" srcset="https://humnai-web-assests.s3-eu-west-1.amazonaws.com/humn-logo-dark-small.png">
+  <img align="center" alt="The humnai logo." src="https://humnai-web-assests.s3-eu-west-1.amazonaws.com/humn-logo-dark-small.png">
+</picture>
+</a>
