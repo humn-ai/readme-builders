@@ -2,6 +2,7 @@
 
 {{- defineDatasource "config" "docs/README.yaml" -}}
 
+
 <a href="https://humn.ai/">
 <picture align="center">
   <source align="center" media="(prefers-color-scheme: dark)" srcset="https://humnai-web-assests.s3.eu-west-1.amazonaws.com/humn-logo-light-small.png">
@@ -9,22 +10,23 @@
   <img align="center" alt="The humnai logo." src="https://humnai-web-assests.s3-eu-west-1.amazonaws.com/humn-logo-dark-small.png">
 </picture>
 </a>
-
-
 <br/>
 
 
 # {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
+
+
+{{ if has (ds "config") "introduction" }}
+## 👋 Introduction
+{{ (ds "config").introduction -}}
+{{ end }}
+
 
 {{ if has (ds "config") "description" }}
 ## 💬 Description
 {{(ds "config").description }}
 {{ end }}
 
-{{ if has (ds "config") "introduction" }}
-## 👋 Introduction
-{{ (ds "config").introduction -}}
-{{ end }}
 
 {{ if has (ds "config") "usage" }}
 ## 🔨 Usage
@@ -33,37 +35,33 @@
 Instead pin to one of our [latest tags]({{ printf "https://github.com/%s/tags" (ds "config").github_repo}}), in the format `?ref=tags/x.y.z`.
 {{end}}
 
+
 {{ (ds "config").usage -}}
 {{ end }}
+
 
 {{ if has (ds "config") "quickstart" }}
 ## 🏁 Quick Start
 {{ (ds "config").quickstart }}
 {{ end }}
 
+
 {{ if has (ds "config") "examples" }}
 ## 🧑‍🏫 Examples
 {{ (ds "config").examples -}}
 {{ end }}
 
+
 <!-- BEGIN_TF_DOCS -->
 
 <!-- END_TF_DOCS -->
 
+
 {{ if has (ds "config") "related" }}
 ## 🔗 Related Projects
-You can find more [Terraform Modules](terraform_modules) by vising the link.
-Additionally, check out these other related, and maintained projects.
+You can find more Terraform Modules by vising the links below:
 {{ range $related := (ds "config").related }}
 {{ printf "- [%s](%s) - %s" $related.name $related.url $related.description }}{{ end }}
-{{ end}}
-
-
-{{ if has (ds "config") "references" }}
-## 🔗 References
-For additional context, refer to some of these links. 
-{{ range $reference := (ds "config").references }}
-{{ printf "- [%s](%s) - %s" $reference.name $reference.url $reference.description }}{{ end }}
 {{ end}}
 
 
