@@ -2,8 +2,6 @@
 
 {{- defineDatasource "config" "docs/README.yaml" -}}
 
-#
-
 {{ if has (ds "config") "banner" }}
 {{ (ds "config").banner }}
 {{- end -}}
@@ -70,7 +68,6 @@ For additional context, refer to some of these links.
 
 **Got a question?** File a Github [issue]({{ printf "%s/issues" (ds "config").github_repo}}), or message the DevOps team on [Slack]({{ printf "%s" (ds "config").slack_link}}).
 
----
 {{ end }}
 
 
